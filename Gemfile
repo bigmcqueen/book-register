@@ -51,7 +51,7 @@ gem "sassc-rails"
 #追記
 gem 'slim-rails'
 gem 'html2slim'
-
+gem 'bootstrap'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
