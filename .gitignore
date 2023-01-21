@@ -32,4 +32,5 @@
 
 # 追記
 /.env
-/.DS_Store
+*.DS_Store
+*.jpg
