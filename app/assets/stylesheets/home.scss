@@ -1,0 +1,32 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  margin: 0 auto;
+  color: #ffffff;
+  background-color: #6fb98f;
+  background-image: url(/top.jpg);
+  background-size: cover;
+}
+
+h2 {
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 30px;
+  margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin-top: 250px;
+}
