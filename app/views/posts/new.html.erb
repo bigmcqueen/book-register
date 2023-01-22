@@ -1,13 +1,15 @@
-<%= form_tag("/posts/create") do %>
-  <form>
-    <div class="mb-3">
-      <label class="form-label">タイトル</label>
-      <input class="form-control" name="title">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">感想</label>
-      <textarea class="form-control" rows="3" name="thoughts"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-<% end %>
+<div class="text-light">
+  <%= form_tag("/posts/create") do %>
+    <form>
+      <div class="mb-3">
+        <label class="form-label">タイトル</label>
+        <input class="form-control" name="title">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">感想</label>
+        <textarea class="form-control" rows="3" name="thoughts"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  <% end %>
+</div>
