@@ -8,12 +8,20 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new(title: params[:title], thoughts: params[:thoughts])
-    @post.save
-    redirect_to('/posts/index')
+    if @post.save
+      flash[:notice] = 'Succeeded!'
+      redirect_to '/posts/index'
+    else
+      @post.errors.full_messages.each do |message|
+        flash[:notice] = message
+      end
+      render 'new'
+    end
   end
 
   def edit
@@ -23,13 +31,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     @post.thoughts = params[:thoughts]
-    @post.save
-    redirect_to('/posts/index')
+    if @post.save
+      flash[:notice] = 'Succeeded!'
+      redirect_to '/posts/index'
+    else
+      @post.errors.full_messages.each do |message|
+        flash[:notice] = message
+      end
+      render 'edit'
+    end
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
-    redirect_to('/posts/index')
+    flash[:notice] = 'Succeeded!'
+    redirect_to '/posts/index'
   end
 end
