@@ -34,7 +34,11 @@
       </div>
     </div>
   </nav>
-
+  <% if flash[:notice] %>
+    <div class="text-info" style="font-size: large;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
   <body>
     <%= yield %>
   </body>
