@@ -1,15 +1,25 @@
-<div class="text-light">
-  <%= form_tag("/posts/create") do %>
-    <form>
-      <div class="mb-3">
-        <label class="form-label">タイトル</label>
-        <input class="form-control" name="title">
+<style>
+.form-control {
+  width: 90%;
+  margin: 0 auto;
+}
+</style>
+<%= form_tag("/posts/create") do %>
+  <form>
+    <div class="container">
+      <div class="row mb-3">
+        <label class="col-form-label col-sm-2">Title</label>
+        <div class="col-sm-10">
+          <input class="form-control" name="title">
+        </div>
       </div>
-      <div class="mb-3">
-        <label class="form-label">感想</label>
-        <textarea class="form-control" rows="3" name="thoughts"></textarea>
+      <div class="row mb-3">
+        <label class="col-form-label col-sm-2">Thoughts</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" rows="3" name="thoughts"></textarea>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  <% end %>
-</div>
+    </div>
+  </form>
+<% end %>
