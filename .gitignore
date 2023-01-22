@@ -32,5 +32,6 @@
 
 # 追記
 /.env
-*.DS_Store
 *.jpg
+*.webp
+*.png
