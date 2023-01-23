@@ -1,9 +1,13 @@
 <%= form_tag("/posts/#{@post.id}/update") do %>
   <form>
-    <div class="mb-3">
-      <label class="form-label">編集する</label>
-      <textarea class="form-control" rows="3" name="thoughts"><%= @post.thoughts %></textarea>
+    <div class="container">
+      <div class="row">
+        <div class="mb-3">
+          <label class="form-label">編集する</label>
+          <textarea class="form-control" rows="3" name="thoughts"><%= @post.thoughts %></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">保存</button>
     </div>
-    <button type="submit" class="btn btn-primary">保存</button>
   </form>
 <% end %>

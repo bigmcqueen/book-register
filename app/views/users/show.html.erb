@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="border">
+      <div class="col-md-4">
+        <h2><%= @user.name %></h2>
+      </div>
+      <div class="col-md-4">
+        <p><%= @user.email %></p>
+      </div>
+      <div class="col-md-4">
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+      </div>
+    </div>
+  </div>
+</div>
