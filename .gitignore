@@ -32,6 +32,5 @@
 
 # 追記
 /.env
-*.jpg
-*.webp
-*.png
+/public/user_images/*
+/public/*.webp
