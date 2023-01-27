@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'records' => 'records#index'
-  get 'records/show'
+  get 'records/index' => 'records#index'
+  get 'records/:id' => 'records#show'
   get 'records/new'
   get 'records/edit'
 
