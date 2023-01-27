@@ -1,2 +1,16 @@
-<h1>Records#edit</h1>
+<h1>編集する</h1>
 <p>Find me in app/views/records/edit.html.erb</p>
+
+<%= form_tag "/records/#{@record.id}/update" do %>
+  <form>
+    <div class="mb-3">
+      <label class="form-label">タイトル</label>
+      <input class="form-control" name="title" value="<%= @record.title %>">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">感想（20文字以内！）</label>
+      <textarea class="form-control" name="thoughts" cols="30" rows="5"><%= @record.thoughts %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">保存</button>
+  </form>
+<% end %>
