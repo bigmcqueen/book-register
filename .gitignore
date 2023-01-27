@@ -30,7 +30,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# 追記
-/.env
-/public/user_images/*
-/public/*.webp
+.DS_Store
+database_yml
+vendor/bundle
+/.bundle
+public/images/*
