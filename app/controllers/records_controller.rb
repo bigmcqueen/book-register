@@ -16,9 +16,12 @@ class RecordsController < ApplicationController
       title: params[:title],
       thoughts: params[:thoughts],
       )
-    @record.save
-
-    redirect_to "/records/index"
+    if @record.save
+      flash[:notice] = 'Successful registration!'
+      redirect_to '/records/index'
+    else
+      render 'records/new'
+    end
   end
 
   def edit
@@ -29,15 +32,18 @@ class RecordsController < ApplicationController
     @record = Record.find_by(id: params[:id])
     @record.title = params[:title]
     @record.thoughts = params[:thoughts]
-    @record.save
-
-    redirect_to "/records/index"
+    if @record.save
+      flash[:notice] = 'Successful edit!'
+      redirect_to '/records/index'
+    else
+      render 'records/edit'
+    end
   end
 
   def destroy
     @record = Record.find_by(id: params[:id])
     @record.destroy
-    
-    redirect_to "/records/index"
+    flash[:notice] = 'Successful deletion!'
+    redirect_to '/records/index'
   end
 end
