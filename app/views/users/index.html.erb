@@ -1,0 +1,10 @@
+<h1>ユーザー</h1>
+<p>Find me in app/views/records/index.html.erb</p>
+<div class="d-grid gap-3 mt-3">
+  <% @users.each do |user| %>
+    <div class="p-2 bg-light border">
+      <%= link_to user.name, "/users/#{user.id}", {class: "text-decoration-none"} %>
+    </div>
+  <% end %>
+</div>  
+
