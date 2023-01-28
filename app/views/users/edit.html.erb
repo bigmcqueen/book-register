@@ -1,0 +1,21 @@
+<h1>Users#edit</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+
+<%= form_tag "/users/#{@user.id}/update" do %>
+  <form>
+    <% @record.errors.full_messages.each do |message| %>
+      <div class="mb-1 text-danger">
+        <%= message %>
+      </div>
+    <% end %>
+    <div class="mb-3">
+      <label class="form-label">ユーザー名</label>
+      <input class="form-control" name="title" value="<%= @user.name %>">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">メールアドレス</label>
+      <input class="form-control" name="email" value="<%= @user.email %>">
+    </div>
+    <button type="submit" class="btn btn-success">保存</button>
+  </form>
+<% end %>
