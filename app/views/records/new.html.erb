@@ -3,6 +3,11 @@
 
 <%= form_tag "/records/create" do %>
   <form>
+    <% @record.errors.full_messages.each do |message| %>
+      <div class="mb-1 text-danger">
+        <%= message %>
+      </div>
+    <% end %>
     <div class="mb-3">
       <label class="form-label">タイトル</label>
       <input class="form-control" name="title">
@@ -11,6 +16,6 @@
       <label class="form-label">感想（20文字以内！）</label>
       <textarea class="form-control" name="thoughts" cols="30" rows="5"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">登録する</button>
+    <button type="submit" class="btn btn-success">登録する</button>
   </form>
 <% end %>

@@ -11,10 +11,10 @@
 
   <body>
     <header class="header">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
-            <img src="/book.jpg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="/images/book.jpg" width="30" height="24" class="d-inline-block align-text-top">
             BookRegister
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,11 @@
         </div>
       </nav>
     </header>
+    <% if flash[:notice] %>
+      <div class="bg-success text-white d-flex align-items-center justify-content-center" style="height: 50px; font-size: 20px;">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <div class="container">
       <div class="mt-5">
         <%= yield %>
