@@ -13,7 +13,11 @@
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">
+          <% if @current_user %>
+            <a class="navbar-brand" href="/records/index">
+          <% else %>
+            <a class="navbar-brand" href="/">
+          <% end %>
             <img src="/images/book.jpg" width="30" height="24" class="d-inline-block align-text-top">
             BookRegister
           </a>
@@ -21,37 +25,54 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/about">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/records/index">とりま本リスト</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/records/new">新規登録</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/users/index">ユーザーリスト</a>
-              </li>
-            </ul>
-            <ul class="d-flex navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/signup" tabindex="-1">ユーザー登録</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1">ログアウト</a>
-              </li>
-            </ul>
+            <% if @current_user %>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="/records/index">とりま本リスト</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/records/new">とりま本登録</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/index">ユーザーリスト</a>
+                </li>
+              </ul>
+              <ul class="d-flex navbar-nav">
+                <li class="nav-item">
+                  <%= link_to @current_user.name, "/users/#{@current_user.id}", {class: "nav-link btn btn-link"} %>
+                </li>
+                <li class="nav-item">
+                  <%= button_to "ログアウト", "/logout", {class: "nav-link btn btn-link"} %>
+                </li>
+              </ul>
+
+            <% else %>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/about">About</a>
+                </li>
+              </ul>
+              <ul class="d-flex navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/signup" tabindex="-1">ユーザー登録</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login" tabindex="-1">ログイン</a>
+                </li>
+              </ul>
+            <% end %>
+
           </div>
         </div>
       </nav>
     </header>
-    <% if flash[:notice] %>
-      <div class="bg-success text-white d-flex align-items-center justify-content-center" style="height: 50px; font-size: 20px;">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div class="flash">
+      <% if flash[:notice] %>
+        <div class="bg-primary text-white d-flex align-items-center justify-content-center" style="height: 50px; font-size: 20px;">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+    </div>
     <div class="container">
       <div class="mt-5">
         <%= yield %>
