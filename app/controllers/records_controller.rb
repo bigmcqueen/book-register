@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @records = Record.all.order(created_at: :desc)
+    @records = Record.where(user_id: @current_user.id)
   end
 
   def show
@@ -17,6 +17,7 @@ class RecordsController < ApplicationController
     @record = Record.new(
       title: params[:title],
       thoughts: params[:thoughts],
+      user_id: @current_user.id
       )
     if @record.save
       flash[:notice] = 'Successful registration!'
