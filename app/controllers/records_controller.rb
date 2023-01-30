@@ -17,6 +17,7 @@ class RecordsController < ApplicationController
     @record = Record.new(
       title: params[:title],
       thoughts: params[:thoughts],
+      user_id: @current_user.id
       )
     if @record.save
       flash[:notice] = 'Successful registration!'
