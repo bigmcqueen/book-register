@@ -4,10 +4,7 @@
 <div class="d-grid gap-3 mt-3">
   <% @records.each do |record| %>
     <div class="p-2 bg-light border">
-      <%=
-        link_to record.title, "/records/#{record.id}",
-        {class: "text-decoration-none"}
-      %>
+      <%= link_to record.title, "/records/#{record.id}", {class: "text-decoration-none"} %>
     </div>
   <% end %>
 </div>  
