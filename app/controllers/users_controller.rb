@@ -27,10 +27,10 @@ class UsersController < ApplicationController
     )
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = 'Successful user registration!'
-      redirect_to '/records/index'
+      flash[:notice] = "Successful user registration!"
+      redirect_to "/records/index"
     else
-      render 'users/new'
+      render "users/new"
     end
   end
 
@@ -39,10 +39,10 @@ class UsersController < ApplicationController
     @user.name = params[:name]
     @user.email = params[:email]
     if @user.save
-      flash[:notice] = 'Successful edit!'
-      render 'users/show'
+      flash[:notice] = "Successful edit!"
+      render "users/show"
     else
-      render 'users/edit'
+      render "users/edit"
     end
   end
 
@@ -54,26 +54,31 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user
       session[:user_id] = @user.id
-      flash[:notice] = 'Successful login!'
-      redirect_to '/records/index'
+      flash[:notice] = "Successful login!"
+      redirect_to "/records/index"
     else
-      @error_message = 'Incorrect email address or password.'
+      @error_message = "Incorrect email address or password."
       @email = params[:email]
       @password = params[:password]
-      render 'users/login_form'
+      render "users/login_form"
     end
   end
 
   def logout
     session[:user_id] = nil
-    flash[:notice] = 'Logged out'
-    redirect_to '/login'
+    flash[:notice] = "Logged out"
+    redirect_to "/login"
+  end
+
+  def favorites
+    @user = User.find_by(id: params[:id])
+    @favorites = Favorite.where(user_id: @user.id)
   end
 
   def ensure_correct_user
     if @current_user.id != params[:id].to_i
-      flash[:notice] = 'No authorisation.'
-      redirect_to '/records/index'
+      flash[:notice] = "No authorisation."
+      redirect_to "/records/index"
     end
   end
 end
