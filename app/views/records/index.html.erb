@@ -1,10 +1,19 @@
 <h1>とりま本リスト</h1>
 <p>Find me in app/views/records/index.html.erb</p>
-<%= link_to "新規登録", "/records/new", class: "btn btn-primary" %>
+
+<div class="row mt-3">
+  <div class="col-2">
+    <%= link_to "お気に入り", "/users/#{@current_user.id}/favorites", {class: "btn btn-warning"} %>
+  </div>
+  <div class="col-2">
+    <%= link_to "新規登録", "/records/new", class: "btn btn-primary" %>
+  </div>
+</div>
+
 <div class="d-grid gap-3 mt-3">
   <% @records.each do |record| %>
     <div class="p-2 bg-light border">
       <%= link_to record.title, "/records/#{record.id}", {class: "text-decoration-none"} %>
     </div>
   <% end %>
-</div>  
+</div> 
