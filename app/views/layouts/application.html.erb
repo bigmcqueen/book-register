@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -18,7 +18,7 @@
           <% else %>
             <a class="navbar-brand" href="/">
           <% end %>
-            <img src="/images/book.jpg" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="/images/book.png" width="30" height="24" class="d-inline-block align-text-top">
             BookRegister
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,9 +32,6 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/records/new">とりま本登録</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/users/index">ユーザーリスト</a>
                 </li>
               </ul>
               <ul class="d-flex navbar-nav">
