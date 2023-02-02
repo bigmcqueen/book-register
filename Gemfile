@@ -73,3 +73,6 @@ end
 
 # Use Bootstrap
 gem "bootstrap"
+
+# Usere bcrypt
+gem "bcrypt"
