@@ -1,6 +1,5 @@
 <h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
-
+<br>
 <%= form_tag "/users/#{@user.id}/update" do %>
   <form>
     <% @user.errors.full_messages.each do |message| %>
