@@ -1,6 +1,5 @@
 <h1>編集する</h1>
-<p>Find me in app/views/records/edit.html.erb</p>
-
+<br>
 <%= form_tag "/records/#{@record.id}/update" do %>
   <form>
     <% @record.errors.full_messages.each do |message| %>

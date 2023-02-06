@@ -1,8 +1,8 @@
 <h1><%= @record.title %></h1>
-<p>Find me in app/views/records/show.html.erb</p>
+<br>
 <div>
   <p><%= @record.thoughts %></p>
-  <p>created_at: <%= @record.created_at %></p>
+  <p>作成日時: <%= @record.created_at.to_fs(:datetime_jp) %></p>
 </div>
 <div class="row mt-3">
   <div class="col-1">
