@@ -17,10 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  user: postgres
-  port: 5432
-  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -85,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV["DATABASE_URL"] %>
   database: book_register
   username: book_register_user
   password: <%= ENV.fetch["BOOK_REGISTER_DATABASE_PASSWORD"] %>
