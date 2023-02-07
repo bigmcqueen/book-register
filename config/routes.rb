@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post "users/create"
   get "signup" => "users#new"
   
-  get "users/index"
   get "users/:id/edit" => "users#edit"
   get "users/:id" => "users#show"
   post "login" => "users#login"
