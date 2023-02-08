@@ -1,4 +1,4 @@
-FROM ruby:3.2.0-bullseye
+FROM ruby:3.2
 
 RUN apt-get update && apt-get install -y \
 	build-essential \
@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
 	nodejs \
 	postgresql-client \
 	yarn
-WORKDIR /book-register
-COPY Gemfile Gemfile.lock /book-register/
+
+WORKDIR /book_register
+COPY Gemfile Gemfile.lock /book_register/
 RUN bundle install

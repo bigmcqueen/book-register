@@ -10,7 +10,7 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - '.:/book-register'
+      - '.:/book_register'
     environment:
       - 'DATABASE_PASSWORD=${DATABASE_PASSWORD}'
     tty: true

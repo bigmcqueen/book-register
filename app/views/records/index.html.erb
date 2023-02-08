@@ -1,18 +1,41 @@
 <h1>とりま本リスト</h1>
-<br>
-<div class="row mt-3">
-  <div class="col-2">
-    <%= link_to "お気に入り", "/users/#{@current_user.id}/favorites", {class: "btn btn-warning"} %>
+<% if !@records.empty? %>
+  <div class="row mt-5">
+    <div class="col-2">
+      <%= link_to "お気に入り", "/users/#{@current_user.id}/favorites", {class: "btn btn-outline-danger"} %>
+    </div>
+    <div class="col-2">
+      <%= link_to "新規登録", "/records/new", class: "btn btn-primary" %>
+    </div>
   </div>
-  <div class="col-2">
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">タイトル</th>
+        <th scope="col">登録日時</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @records.each do |record| %>
+        <tr>
+          <td scope="col" class="align-middle"><%= link_to record.title, "/records/#{record.id}" %></th>
+          <td scope="col" class="align-middle"><%= record.created_at.to_fs(:datetime_jp) %></th>
+          <td scope="col"><%= link_to "編集","/records/#{record.id}/edit", {class: "btn btn-link mr-3"} %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% else %>
+  <br>
+  <div class="text-center">
+    <h2>とりあえず読んだ本を登録してみよう！</h2>
+  </div>
+  <br>
+  <div class="d-grid gap-2 col-6 mx-auto">
     <%= link_to "新規登録", "/records/new", class: "btn btn-primary" %>
   </div>
-</div>
-
-<div class="d-grid gap-3 mt-3">
-  <% @records.each do |record| %>
-    <div class="p-2 bg-light border">
-      <%= link_to record.title, "/records/#{record.id}", {class: "text-decoration-none"} %>
-    </div>
   <% end %>
 </div> 
