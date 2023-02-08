@@ -8,7 +8,20 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      background-image: url(/images/top.webp);
+      background-size: cover;
+    }
+    .container {
+      height: 100%;
+    }
+  </style>
   <body>
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -18,21 +31,15 @@
           <% else %>
             <a class="navbar-brand" href="/">
           <% end %>
-            <img src="/images/本アイコン.svg" width="30" height="24" class="d-inline-block align-text-top">
-            BookRegister
-          </a>
+              <img src="/images/本アイコン.svg" width="30" height="24" class="d-inline-block align-text-top">
+              BookRegister
+            </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <% if @current_user %>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="/records/index">とりま本リスト</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/records/new">とりま本登録</a>
-                </li>
               </ul>
               <ul class="d-flex navbar-nav">
                 <li class="nav-item">
@@ -42,14 +49,13 @@
                   <%= button_to "ログアウト", "/logout", {class: "nav-link btn btn-link"} %>
                 </li>
               </ul>
-
             <% else %>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              </ul>
+              <ul class="d-flex navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="/about">About</a>
                 </li>
-              </ul>
-              <ul class="d-flex navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link" href="/signup" tabindex="-1">ユーザー登録</a>
                 </li>
@@ -58,22 +64,19 @@
                 </li>
               </ul>
             <% end %>
-
           </div>
         </div>
       </nav>
     </header>
     <div class="flash">
       <% if flash[:notice] %>
-        <div class="bg-primary text-white d-flex align-items-center justify-content-center" style="height: 50px; font-size: 20px;">
+        <div class="bg-transparent text-dark d-flex align-items-center justify-content-center" style="height: 50px; font-size: 20px;">
           <%= flash[:notice] %>
         </div>
       <% end %>
     </div>
     <div class="container">
-      <div class="mt-5">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
   </body>
 </html>

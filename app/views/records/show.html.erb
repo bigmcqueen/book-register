@@ -1,6 +1,6 @@
 <h1>登録本「<%= @record.title %>」の詳細</h1>
 <br>
-<%= link_to "一覧", "/records/index" %>
+<%= link_to "一覧", "/records/index", {class: "btn btn-outline-dark"} %>
 <div class="mt-3">
   <table class="table">
     <tbody>
@@ -40,9 +40,9 @@
     <% end %>
   </div>
   <div class="col-1">
-    <%= link_to "編集","/records/#{@record.id}/edit", {class: "btn btn-primary"} %>
+    <%= link_to "編集","/records/#{@record.id}/edit", {class: "btn btn-outline-dark"} %>
   </div>
   <div class="col-1">
-    <%= button_to "削除", "/records/#{@record.id}/destroy", {class: "btn btn-danger"} %>
+    <%= button_to "削除", "/records/#{@record.id}/destroy", {class: "btn btn-dark"} %>
   </div>
 </div>
