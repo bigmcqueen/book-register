@@ -21,4 +21,3 @@ COPY /bin/render-build.sh /usr/bin/
 RUN chmod +x /usr/bin/render-build.sh
 ENTRYPOINT ["./bin/render-build.sh"]
 EXPOSE 3000
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
