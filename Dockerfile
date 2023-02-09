@@ -15,10 +15,11 @@ RUN rm -rf /var/lib/apt/lists/*
 WORKDIR /book_register
 COPY Gemfile Gemfile.lock /book_register/
 
+RUN bundle lock --add-platform ruby x86_64 arm64
 RUN bundle install
 
 COPY /bin/render-build.sh /usr/bin/
 RUN chmod +x /usr/bin/render-build.sh
 ENTRYPOINT ["render-build.sh"]
 EXPOSE 3000
-CMD ["rails", "s", "-e", "production"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
