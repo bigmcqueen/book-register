@@ -22,4 +22,4 @@ RUN chmod +x /usr/bin/render-build.sh
 ENTRYPOINT ["render-build.sh"]
 EXPOSE 3000
 RUN mkdir -p tmp/pids
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb", "-e", "production"]
