@@ -71,6 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
-# Use Bootstrap
-gem "bootstrap"
+# add
+gem "bootstrap", "~> 5.1.3"
+gem "mini_racer"
 
