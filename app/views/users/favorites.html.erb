@@ -1,15 +1,19 @@
 <h1>お気に入りリスト</h1>
 <br>
-<div class="row mt-3">
-  <div class="col-2">
-    <%= link_to "戻る", "/records/index", class: "btn btn-dark" %>
-  </div>
-</div>
-<div class="d-grid gap-3 mt-3">
-  <% @favorites.each do |favorite| %>
-    <% record = Record.find_by(id: favorite.record_id) %>
-    <div class="p-2 bg-light border">
-      <%= link_to record.title, "/records/#{record.id}", {class: "link-dark"} %>
-    </div>
-  <% end %>
-</div> 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">タイトル</th>
+      <th scope="col">登録日時</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorites.each do |favorite| %>
+      <% record = Record.find_by(id: favorite.record_id) %>
+        <tr>
+          <td scope="col" class="align-middle"><%= link_to record.title, "/records/#{record.id}", {class: "link-dark"} %></td>
+          <td scope="col" class="align-middle"><%= record.created_at.to_fs(:datetime_jp) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
