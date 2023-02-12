@@ -1,28 +1,19 @@
-version: '3.8'
-
-volumes:
-  db-data:
-
-
+version: "3"
 services:
-  web:
-    build: .
-    ports:
-      - '3000:3000'
-    volumes:
-      - '.:/book_register'
-    environment:
-      - 'DATABASE_PASSWORD=${DATABASE_PASSWORD}'
-    tty: true
-    stdin_open: true
-    depends_on:
-      - db
-    links:
-      - db
-
   db:
     image: postgres:15.1
     volumes:
-      - 'db-data:/var/lib/postgres/data'
+      - ./tmp/db:/var/lib/postgresql/data
     environment:
-      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_PASSWORD=password'
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/book_register
+    environment:
+      - 'DATABASE_PASSWORD=password'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
